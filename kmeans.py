@@ -5,8 +5,6 @@ import numpy as np
 import pytest
 
 
-# TODO : kmeans._labels, cluster_centers_  and elbow plot and inertia
-
 class KMeans:
     def __init__(self, data=None, test=None, k=None, tol=0.001, max_iter=300):
         self.data = data
@@ -139,18 +137,16 @@ colors = 10 * ['green', 'red', 'cyan', 'blue', 'black', 'yellow', 'magenta']
 clf = KMeans(data=X, test=unknowns, k=2)
 clf.fit()
 
-# for centroid in clf.centroids:
-#     plt.scatter(clf.centroids[centroid][0], clf.centroids[centroid][1], marker='o', color='k', s=150, linewidths=5)
-#
-# for classification in clf.cluster_assignments:
-#     color = colors[classification]
-#     for featureSet in clf.cluster_assignments[classification]:
-#         plt.scatter(featureSet[0], featureSet[1], marker='x', color=color, s=150, linewidths=5)
-#
-#
-# for unknown in unknowns:
-#     classification = clf.predict(unseen=unknown)
-#     plt.scatter(unknown[0], unknown[1], marker='*', color=colors[classification], s=150, linewidths=5)
-# plt.show()
-# #
+for centroid in clf.centroids:
+    plt.scatter(clf.centroids[centroid][0], clf.centroids[centroid][1], marker='o', color='k', s=150, linewidths=5)
 
+for classification in clf.cluster_assignments:
+    color = colors[classification]
+    for featureSet in clf.cluster_assignments[classification]:
+        plt.scatter(featureSet[0], featureSet[1], marker='x', color=color, s=150, linewidths=5)
+
+
+for unknown in unknowns:
+    classification = clf.predict(unseen=unknown)
+    plt.scatter(unknown[0], unknown[1], marker='*', color=colors[classification], s=150, linewidths=5)
+plt.show()
