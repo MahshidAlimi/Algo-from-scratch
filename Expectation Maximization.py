@@ -60,9 +60,9 @@ class EM_Algorithm:
         count_class = self.class_counts
         count_feature = self.feature_counts
         for count in range(self.num_classes):
-            result += prod(count_feature[i][feature(tple)][count]
+            result += EM_Algorithm.prod(count_feature[i][feature(tple)][count]
                            for (i, feature) in enumerate(features))/(count_class[count]**len(features)-1)
         if result > 0:
-            return -(math.log2(result/len(self.data)))                                   
+            return -(maths.log2(result/len(self.data)))                                   
         else:
             return float("inf")
